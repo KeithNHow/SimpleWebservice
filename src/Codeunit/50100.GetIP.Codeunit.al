@@ -16,8 +16,8 @@ codeunit 50100 GetIP
     begin
         if client.Get('https://api.ipify.org?format=json', response) then begin
             if response.IsSuccessStatusCode then begin
-                response.Content().ReadAs(ResponseTxt);
-                jsonObj.ReadFrom(responseTxt);
+                response.Content().ReadAs(ResponseTxt); //Gets the contents of the http response and reads it into the provide text
+                jsonObj.ReadFrom(responseTxt); //Reads jsontext into json object variable
                 exit(GetJsonTextField(jsonObj, 'ip'));
             end;
         end else begin
@@ -30,15 +30,14 @@ codeunit 50100 GetIP
     /// <summary>
     /// GetJsonTextField.
     /// </summary>
-    /// <param name="O">JsonObject.</param>  
-    /// <param name="Member">Text.</param>
+    /// <param name="pJsonObj">JsonObject.</param>  
+    /// <param name="pMember">Text.</param>
     /// <returns>Return value of type Text.</returns>
-    procedure GetJsonTextField(O: JsonObject; Member: Text): Text
+    procedure GetJsonTextField(pJsonObj: JsonObject; pMember: Text): Text
     var
         result: JsonToken;
     begin
-        if O.get(Member, result) then begin
-            exit(Result.AsValue().AsText());
-        end;
+        if pJsonObj.Get(pMember, result) then
+            exit(Result.AsValue().AsText()); //Convert json token value to json obj value and then into text parameter
     end;
 }
