@@ -1,7 +1,7 @@
 /// <summary>
-/// Codeunit "GetIP" (ID 50100).
+/// Codeunit "GetIP" (ID 51300).
 /// </summary>
-codeunit 50100 GetIP
+codeunit 51300 GetIP
 {
     /// <summary>
     /// GetIP.
