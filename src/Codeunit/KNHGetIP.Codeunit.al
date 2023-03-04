@@ -1,7 +1,7 @@
 /// <summary>
-/// Codeunit "GetIP" (ID 51300).
+/// Codeunit "KNH_GetIP" (ID 51300).
 /// </summary>
-codeunit 51300 GetIP
+codeunit 51300 "KNH_GetIP"
 {
     /// <summary>
     /// GetIP.
@@ -9,19 +9,19 @@ codeunit 51300 GetIP
     /// <returns>Return value of type Text.</returns>
     procedure GetIP(): Text
     var
-        HttpClient: HttpClient;
-        httpresponsemessage: HttpResponseMessage;
-        jsonObj: JsonObject;
-        responseTxt: Text;
+        MyHttpClient: HttpClient;
+        MyHttpResponseMessage: HttpResponseMessage;
+        MyJsonObj: JsonObject;
+        MyResponseTxt: Text;
     begin
-        if HttpClient.Get('https://api.ipify.org?format=json', HttpResponseMessage) then begin
-            if HttpResponseMessage.IsSuccessStatusCode then begin
-                HttpResponseMessage.Content().ReadAs(ResponseTxt); //Gets the contents of the http response and reads it into the provide text
-                jsonObj.ReadFrom(responseTxt); //Reads jsontext into json object variable
-                exit(GetJsonTextField(jsonObj, 'ip'));
+        if MyHttpClient.Get('https://api.ipify.org?format=json', MyHttpResponseMessage) then begin
+            if MyHttpResponseMessage.IsSuccessStatusCode then begin
+                MyHttpResponseMessage.Content().ReadAs(MyResponseTxt); //Gets the contents of the http response and reads it into the provide text
+                MyJsonObj.ReadFrom(MyResponseTxt); //Reads jsontext into json object variable
+                exit(GetJsonTextField(MyJsonObj, 'ip'));
             end;
         end else
-            if HttpResponseMessage.IsBlockedByEnvironment then
+            if MyHttpResponseMessage.IsBlockedByEnvironment then
                 Error('Please turn on "Allow HttpClient Request" from the app''s configure page in Extension Management.');
     end;
 
