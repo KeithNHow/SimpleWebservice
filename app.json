@@ -1,8 +1,8 @@
 {
   "id": "2853d3b9-f773-4863-8273-196e90bc287a",
   "name": "Simple Webservice",
-  "publisher": "Default publisher",
-  "version": "1.0.0.0",
+  "publisher": "KeithHow",
+  "version": "27.0.0.0",
   "brief": "",
   "description": "",
   "privacyStatement": "",
@@ -12,8 +12,8 @@
   "logo": "",
   "dependencies": [],
   "screenshots": [],
-  "platform": "1.0.0.0",
-  "application": "25.0.0.0",
+  "platform": "27.0.0.0",
+  "application": "27.0.0.0",
   "idRanges": [
     {
       "from": 51300,
@@ -22,8 +22,8 @@
   ],
   "resourceExposurePolicy": {
     "allowDebugging": true,
-    "allowDownloadingSource": false,
-    "includeSourceInSymbolFile": false
+    "allowDownloadingSource": true,
+    "includeSourceInSymbolFile": true
   },
-  "runtime": "14.0"
+  "runtime": "16.0"
 }
